@@ -5,13 +5,14 @@ import { getAuth } from "firebase/auth";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCviKahXRHbZuXKJ8bizsmep8Wg0hQnaXU",
-  authDomain: "autopathfinders.firebaseapp.com",
-  projectId: "autopathfinders",
-  storageBucket: "autopathfinders.appspot.com",
-  messagingSenderId: "575765170692",
-  appId: "1:575765170692:web:878717bfacfca284e0c351"
+  apiKey: "AIzaSyARvBXSPj-c74oOq-SBXVnbJH0gxBJePnI",
+  authDomain: "pearl-ashore.firebaseapp.com",
+  projectId: "pearl-ashore",
+  storageBucket: "pearl-ashore.appspot.com",
+  messagingSenderId: "1061993746229",
+  appId: "1:1061993746229:web:689eca12ed809aea20067c"
 };
 
 // Initialize Firebase

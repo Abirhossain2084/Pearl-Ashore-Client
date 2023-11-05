@@ -68,7 +68,7 @@ const Register = () => {
    
 
     return (
-        <div className="hero min-h-screen bg-base-200" style={{ backgroundImage: 'url("https://i.ibb.co/S5rvq3Y/ryan-spencer-c-NEi-PIxp-YI-unsplash.jpg")', opacity: '0.8' }}>
+        <div className="hero min-h-screen bg-base-200" style={{ backgroundImage: 'url("https://i.ibb.co/qgV3g1m/marten-bjork-n-IKQDCyr-G0-unsplash.jpg")', opacity: '0.8' }}>
         <div className="hero-content flex-col">
             <div className="text-center ">
                 <h1 className="text-5xl text-yellow-500 font-bold">Register now!</h1>

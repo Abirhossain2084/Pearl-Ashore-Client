@@ -64,13 +64,13 @@ const Login = () => {
     }
 
     return (
-        <div className="hero min-h-screen bg-white-200" style={{ backgroundImage: 'url("https://i.ibb.co/S5rvq3Y/ryan-spencer-c-NEi-PIxp-YI-unsplash.jpg")', opacity: '0.9' }}>
+        <div className="hero min-h-screen bg-white-200" style={{ backgroundImage: 'url("https://i.ibb.co/qgV3g1m/marten-bjork-n-IKQDCyr-G0-unsplash.jpg")', opacity: '0.9' }}>
         <div className="hero-content flex-col">
             <div className="text-center ">
                 <h1 className="text-5xl text-yellow-500 font-bold">Login now!</h1>
             </div>
-            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl ">
-                <div className="card-body text-white  glass rounded-lg mb-16">
+            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl  ">
+                <div className="card-body  text-white  glass rounded-lg mb-16">
                     <form 
                     onSubmit={handleLogin}
                     >
