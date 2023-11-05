@@ -19,6 +19,7 @@ import Error from './Componenets/Error/Error';
 import Room from './Componenets/Rooms/Room';
 import MyBookings from './Componenets/MyBookings/MyBookings';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
+import RoomDetails from './Componenets/Rooms/RoomDetails ';
 
 
 
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    errorElement:<Error></Error>,
+    // errorElement:<Error></Error>,
     children: [
       {
         path:"/",
@@ -44,6 +45,12 @@ const router = createBrowserRouter([
         path:"/rooms",
         element:<Room></Room>,
         loader: ()=> fetch('http://localhost:5000/rooms')
+      },
+      {
+        path:"/rooms/:id",
+        element:<RoomDetails></RoomDetails>,
+        loader: ({params}) => fetch(`http://localhost:5000/rooms/${params.id}`)
+        
       },
       {
         path:"/mybookings",
