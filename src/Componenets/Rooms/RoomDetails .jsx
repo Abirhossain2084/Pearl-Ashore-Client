@@ -61,6 +61,8 @@ const RoomDetails = () => {
         price: rooms.pricePerNight,        
         rating: rooms.availability,
         photo: rooms.images,
+        date: bookingDate.toDateString(),
+        duration:bookingDuration,
       
       };
 
