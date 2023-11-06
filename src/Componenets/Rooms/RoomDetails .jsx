@@ -1,8 +1,11 @@
 import { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import swal from 'sweetalert';
+import { useContext } from 'react';
+import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 // import 'sweetalert/dist/sweetalert.css';
 
 
@@ -14,6 +17,10 @@ const RoomDetails = () => {
   const [bookingDuration, setBookingDuration] = useState(1); // Default duration is 1 day
   const [showSummary, setShowSummary] = useState(false);
   const [availableSeats, setAvailableSeats] = useState(rooms.availability);
+
+
+
+  const {user} =useContext(AuthContext);
 
   const handleBookNow = () => {
     if (availableSeats > 0) {
@@ -40,6 +47,59 @@ const RoomDetails = () => {
       swal('Error', 'The room is not available.', 'error');
     }
   };
+
+
+  const handleConfirmBooking = async () => {
+    
+      try {
+       // Create a cartProduct object with the data you want to save
+      const roomDetails = {
+        uname: user.name,
+        email:user.email,
+        name: rooms.name,
+        type: rooms.size,
+        price: rooms.pricePerNight,        
+        rating: rooms.availability,
+        photo: rooms.images,
+      
+      };
+
+      console.log(roomDetails);
+
+        // Send a POST request to your server to add the product to the cart
+        const response = await fetch('http://localhost:5000/bookings', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(roomDetails), // Send the cartProduct data in the request body
+        });
+  
+        if (response.ok) {
+          // The item was added to the cart successfully
+          Swal.fire({
+            title: 'Added!',
+            text: 'Item has been added to My Booking list',
+            icon: 'success',
+            confirmButtonText: 'Okay!'
+          })
+        } else {
+          // There was an error adding the item to the cart
+          Swal.fire({
+            title: 'Something is Wrong',
+            text: 'Try age again',
+            icon: 'error',
+            confirmButtonText: 'Okay!'
+          })
+        }
+      } catch (error) {
+        console.error('Error adding item to lis:', error);
+      }
+  
+  };
+
+
+
   return (
     <div className="my-20">
       <h1 className="text-center font-bold text-6xl my-10">{rooms.name} Details</h1>
@@ -94,7 +154,16 @@ const RoomDetails = () => {
                 <p>Duration: {bookingDuration} days</p>
                 <p>Total Price: ${rooms.pricePerNight * bookingDuration}</p>
                 <p>Room Description: {rooms.description}</p>
-                <button className="btn text-white bg-[#164863] hover-bg-[#427D9D]">Confirm Booking</button>
+                <Link
+          to='/mybookings'
+        >
+          <button 
+          
+          onClick={handleConfirmBooking}
+          className="btn text-white bg-[#164863] hover-bg-[#427D9D]">
+            Confirm Booking
+          </button>
+        </Link>
               </div>
             )}
           </div>
