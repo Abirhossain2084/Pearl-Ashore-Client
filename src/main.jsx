@@ -20,6 +20,7 @@ import Room from './Componenets/Rooms/Room';
 import MyBookings from './Componenets/MyBookings/MyBookings';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import RoomDetails from './Componenets/Rooms/RoomDetails ';
+import DoReview from './Componenets/Review/DoReview';
 
 
 
@@ -55,6 +56,12 @@ const router = createBrowserRouter([
       {
         path:"/mybookings",
         element:<PrivateRoute><MyBookings></MyBookings></PrivateRoute>,
+        
+      },
+      {
+        path:"/reviews/:id",
+        element:<DoReview></DoReview>,
+        // loader: ({params}) => fetch(`http://localhost:5000/rooms/${params.id}`)
         
       },
       
