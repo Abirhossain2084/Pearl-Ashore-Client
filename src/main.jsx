@@ -21,6 +21,7 @@ import MyBookings from './Componenets/MyBookings/MyBookings';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import RoomDetails from './Componenets/Rooms/RoomDetails ';
 import DoReview from './Componenets/Review/DoReview';
+import AboutUs from './Componenets/About us/Aboutus';
 
 
 
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    // errorElement:<Error></Error>,
+    errorElement:<Error></Error>,
     children: [
       {
         path:"/",
@@ -62,6 +63,11 @@ const router = createBrowserRouter([
         path:"/reviews/:id",
         element:<PrivateRoute><DoReview></DoReview></PrivateRoute>,
         loader: ({params}) => fetch(`https://pearl-ashore-server.vercel.app/bookings/${params.id}`)
+      },
+      {
+        path:"/aboutus",
+        element:<AboutUs></AboutUs>,
+        
       },
       
     ]

@@ -28,13 +28,13 @@ function NewsletterSignup() {
         <h2 className='font-bold text-4xl ' >Subscribe to Our Newsletter</h2>
         <p className=''>Get updates, deals, and exclusive offers delivered to your inbox.</p>
         <form>
-          <div className="flex items-center">
+          <div className="flex ">
             <input
               type="email"
               placeholder="Enter your email"
               value={email}
               onChange={handleEmailChange}
-              className="border rounded-l px-2 py-1 w-44"
+              className="border rounded-l  px-2 py-1 w-44"
             />
             <button
               type="button"
