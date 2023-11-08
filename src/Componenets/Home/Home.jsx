@@ -1,5 +1,8 @@
+
 import BannerSection from "./BannerSection";
 import FeaturedRooms from "./FeaturedRooms ";
+import HomeOfferBanner from "./HomeOfferBanner";
+import HomeTestimonial from "./HomeTestimonial";
 // import MapComponent from "./MapComponent ";
 import NewsletterSignup from "./NewsletterSignup";
 
@@ -12,6 +15,9 @@ const Home = () => {
             <FeaturedRooms></FeaturedRooms>
             <NewsletterSignup></NewsletterSignup>
       {/* <MapComponent></MapComponent> */}
+
+      <HomeTestimonial></HomeTestimonial>
+      <HomeOfferBanner></HomeOfferBanner>
       
         </div>
     );

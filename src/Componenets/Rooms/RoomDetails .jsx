@@ -6,6 +6,7 @@ import swal from 'sweetalert';
 import { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import RoomReviews from './RoomReviews';
 // import 'sweetalert/dist/sweetalert.css';
 
 
@@ -21,6 +22,8 @@ const RoomDetails = () => {
 
 
   const {user} =useContext(AuthContext);
+
+ 
 
   const handleBookNow = () => {
     if (availableSeats > 0) {
@@ -173,6 +176,14 @@ const RoomDetails = () => {
 
         </div>
       </div>
+
+
+<div className="">
+    <RoomReviews></RoomReviews>
+</div>
+ 
+
+
 
 
     </div>

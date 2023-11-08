@@ -60,9 +60,8 @@ const router = createBrowserRouter([
       },
       {
         path:"/reviews/:id",
-        element:<DoReview></DoReview>,
-        // loader: ({params}) => fetch(`http://localhost:5000/rooms/${params.id}`)
-        
+        element:<PrivateRoute><DoReview></DoReview></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
       },
       
     ]
