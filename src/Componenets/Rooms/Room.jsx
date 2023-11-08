@@ -1,6 +1,7 @@
 import  { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import RoomListBanner from "./RoomListBanner";
+import { Helmet } from "react-helmet";
 
 const Room = () => {
   const rooms = useLoaderData([]);
@@ -14,6 +15,10 @@ const Room = () => {
 
   return (
     <div className="">
+      <Helmet>
+        <title>Rooms | Pearl Ashore</title>
+        <meta name="description" content="This is my awesome app." />
+      </Helmet>
 <RoomListBanner></RoomListBanner>
 
       <h1 className="text-3xl font-bold text-[#164863] mb-8 text-center font-extrabold text-5xl">

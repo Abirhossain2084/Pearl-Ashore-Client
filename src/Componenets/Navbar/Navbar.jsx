@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { Helmet } from "react-helmet";
 
 
 const Navbar = () => {
@@ -42,6 +43,8 @@ const Navbar = () => {
 
     return (
         <div className="navbar bg-[#DDF2FD]">
+          
+           
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost text-[#164863] lg:hidden">
@@ -52,7 +55,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <Link to='/' ><a className=" ">
-                    <img className="h-20 w-20" src={'https://i.ibb.co/pRDzMdW/Golden-Luxury-Refined-Interior-Design-Logo.png'} alt="" />
+                    <img className="h-32" src={'https://i.ibb.co/cNd19jn/Pics-Art-11-08-09-55-20.png'} alt="" />
                     </a></Link>
             </div>
             <div className="navbar-center hidden lg:flex ">

@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
 
@@ -69,6 +70,10 @@ const Register = () => {
 
     return (
         <div className="hero min-h-screen bg-base-200" style={{ backgroundImage: 'url("https://i.ibb.co/qgV3g1m/marten-bjork-n-IKQDCyr-G0-unsplash.jpg")', opacity: '0.8' }}>
+       <Helmet>
+        <title>Register | Pearl Ashore</title>
+        <meta name="description" content="This is my awesome app." />
+      </Helmet>
         <div className="hero-content flex-col">
             <div className="text-center ">
                 <h1 className="text-5xl text-yellow-500 font-bold">Register now!</h1>

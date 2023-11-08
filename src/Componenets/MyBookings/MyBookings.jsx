@@ -3,6 +3,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import BookingRow from "./BookingRow";
 import Swal from 'sweetalert2'; // Import SweetAlert
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 
 const MyBookings = () => {
@@ -11,7 +12,7 @@ const MyBookings = () => {
 
   const axiosSecure = useAxiosSecure();
 
-  // const url = `http://localhost:5000/bookings?email=${user.email}`;
+  // const url = `https://pearl-ashore-server.vercel.app/bookings?email=${user.email}`;
   const url = `/bookings?email=${user.email}`;
 
   // Fetch user's bookings and update the state
@@ -41,7 +42,7 @@ const handleDelete = (id) => {
     confirmButtonText: 'Yes, delete it!',
   }).then((result) => {
     if (result.isConfirmed) {
-      fetch(`http://localhost:5000/bookings/${id}`, {
+      fetch(`https://pearl-ashore-server.vercel.app/bookings/${id}`, {
         method: 'DELETE',
       })
         .then((res) => res.json())
@@ -59,6 +60,10 @@ const handleDelete = (id) => {
 
   return (
     <div>
+      <Helmet>
+        <title>My Bookings | Pearl Ashore</title>
+        <meta name="description" content="This is my awesome app." />
+      </Helmet>
       <h2 className="text-5xl text-center my-20 font-bold text-[#164863]">Booked Items: {bookings.length}</h2>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">

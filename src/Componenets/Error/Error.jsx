@@ -1,4 +1,5 @@
 
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 
 const Error = () => {
@@ -17,6 +18,11 @@ const Error = () => {
 
     return (
         <div style={containerStyle}>
+
+            <Helmet>
+                <title>Error | Pearl Ashore</title>
+                <meta name="description" content="This is my awesome app." />
+            </Helmet>
             <h1 className="text-6xl text-black mb-40 font-bold"> Page Not Found</h1>
 
 

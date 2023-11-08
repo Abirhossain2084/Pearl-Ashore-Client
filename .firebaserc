@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "autopathfinders"
-  }
+    "default": "pearl-ashore",
+    "new": "pearl-ashore"
+  },
+  "targets": {},
+  "etags": {}
 }

@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from 'react-icons/fc';
 import Swal from "sweetalert2";
 import useAuth from "../Hooks/useAuth";
+import { Helmet } from "react-helmet";
 // import { useContext } from "react";
 // import { AuthContext } from "../../Providers/AuthProvider";
 
@@ -70,6 +71,11 @@ const Login = () => {
 
     return (
         <div className="hero min-h-screen bg-white-200" style={{ backgroundImage: 'url("https://i.ibb.co/qgV3g1m/marten-bjork-n-IKQDCyr-G0-unsplash.jpg")', opacity: '0.9' }}>
+       
+       <Helmet>
+        <title>Log in | Pearl Ashore</title>
+        <meta name="description" content="This is my awesome app." />
+      </Helmet>
         <div className="hero-content flex-col">
             <div className="text-center ">
                 <h1 className="text-5xl text-yellow-500 font-bold">Login now!</h1>

@@ -1,4 +1,5 @@
 
+import { Helmet } from "react-helmet";
 import BannerSection from "./BannerSection";
 import FeaturedRooms from "./FeaturedRooms ";
 import HomeOfferBanner from "./HomeOfferBanner";
@@ -10,6 +11,15 @@ import NewsletterSignup from "./NewsletterSignup";
 const Home = () => {
     return (
         <div>
+
+<div>
+      <Helmet>
+        <title>Home | Pearl Ashore</title>
+        <meta name="description" content="This is my awesome app." />
+      </Helmet>
+
+      
+    </div>
            
             <BannerSection></BannerSection>
             <FeaturedRooms></FeaturedRooms>

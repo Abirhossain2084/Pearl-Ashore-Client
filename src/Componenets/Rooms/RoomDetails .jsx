@@ -27,7 +27,7 @@ const RoomDetails = () => {
  // Fetch the user's bookings when the component mounts
  useEffect(() => {
   if (user) {
-    fetch(`http://localhost:5000/bookings?email=${user.email}`)
+    fetch(`https://pearl-ashore-server.vercel.app/bookings?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         // Ensure that data is an array or default to an empty array
@@ -96,7 +96,7 @@ const handleBookNow = () => {
       console.log(roomDetails);
 
         // Send a POST request to your server to add the product to the cart
-        const response = await fetch('http://localhost:5000/bookings', {
+        const response = await fetch('https://pearl-ashore-server.vercel.app/bookings', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

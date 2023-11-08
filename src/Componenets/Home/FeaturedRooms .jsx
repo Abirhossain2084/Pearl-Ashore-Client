@@ -7,7 +7,7 @@ const FeaturedRooms = () => {
   useEffect(() => {
     // Fetch room data from an API endpoint or your JSON file.
     // For example, you can use the fetch() function to get the data.
-    fetch('http://localhost:5000/rooms') // Replace with your API endpoint or JSON file path.
+    fetch('https://pearl-ashore-server.vercel.app/rooms') // Replace with your API endpoint or JSON file path.
       .then((response) => response.json())
       .then((data) => setRooms(data))
       .catch((error) => console.error(error));

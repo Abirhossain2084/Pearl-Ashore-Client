@@ -27,7 +27,7 @@ const BookingRow = ({ booking, handleDelete, handleBookingConfirm, handleDateUpd
         confirmButtonText: 'Yes, update',
       }).then(async (result) => {
         if (result.isConfirmed) {
-          const response = await fetch(`http://localhost:5000/bookings/${_id}`, {
+          const response = await fetch(`https://pearl-ashore-server.vercel.app/bookings/${_id}`, {
             method: 'PUT',
             headers: {
               'content-type': 'application/json',
