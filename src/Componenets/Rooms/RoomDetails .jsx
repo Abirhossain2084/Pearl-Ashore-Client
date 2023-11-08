@@ -30,7 +30,8 @@ const RoomDetails = () => {
     fetch(`http://localhost:5000/bookings?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
-        setUserBookings(data);
+        // Ensure that data is an array or default to an empty array
+        setUserBookings(Array.isArray(data) ? data : []);
       })
       .catch((error) => {
         console.error('Error fetching user bookings:', error);
@@ -38,10 +39,12 @@ const RoomDetails = () => {
   }
 }, [user]);
 
+
 // Function to check if the user has already booked the room
 const userHasBookedRoom = () => {
-  return userBookings.some((booking) => booking._id === rooms.id);
+  return userBookings.some((booking) => booking._id === rooms._id);
 };
+
 
 
 const handleBookNow = () => {

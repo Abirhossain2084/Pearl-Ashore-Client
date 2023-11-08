@@ -1,13 +1,18 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from 'react-icons/fc';
 import Swal from "sweetalert2";
-import { useContext } from "react";
-import { AuthContext } from "../../Providers/AuthProvider";
+import useAuth from "../Hooks/useAuth";
+// import { useContext } from "react";
+// import { AuthContext } from "../../Providers/AuthProvider";
 
 
 const Login = () => {
 
-    const { signInUser, signInWithGoogle } = useContext(AuthContext);
+    // const { signInUser, signInWithGoogle } = useContext(AuthContext);
+    const { signInUser, signInWithGoogle } = useAuth();
+   
+    
+   
     const navigate = useNavigate();
     const location = useLocation();
 
