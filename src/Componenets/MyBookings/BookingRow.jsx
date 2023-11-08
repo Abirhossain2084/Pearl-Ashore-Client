@@ -18,7 +18,7 @@ const BookingRow = ({ booking, handleDelete, handleBookingConfirm, handleDateUpd
       console.log(updaeteDate);
     
       Swal.fire({
-        title: 'Confirm Update',
+        title: 'Press update and reload the page to see your updated date',
         text: 'Are you sure you want to update the booking date?',
         icon: 'warning',
         showCancelButton: true,

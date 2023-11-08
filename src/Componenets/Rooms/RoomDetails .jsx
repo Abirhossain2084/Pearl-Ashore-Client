@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,10 +7,10 @@ import { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
 import RoomReviews from './RoomReviews';
-// import 'sweetalert/dist/sweetalert.css';
 
 
-// ... Rest of the imports and code ...
+
+
 
 const RoomDetails = () => {
   const rooms = useLoaderData();
@@ -18,39 +18,60 @@ const RoomDetails = () => {
   const [bookingDuration, setBookingDuration] = useState(1); // Default duration is 1 day
   const [showSummary, setShowSummary] = useState(false);
   const [availableSeats, setAvailableSeats] = useState(rooms.availability);
+  const [userBookings, setUserBookings] = useState([]);
 
 
 
   const {user} =useContext(AuthContext);
 
- 
+ // Fetch the user's bookings when the component mounts
+ useEffect(() => {
+  if (user) {
+    fetch(`http://localhost:5000/bookings?email=${user.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setUserBookings(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching user bookings:', error);
+      });
+  }
+}, [user]);
 
-  const handleBookNow = () => {
-    if (availableSeats > 0) {
-      // If there are available seats, allow the booking
+// Function to check if the user has already booked the room
+const userHasBookedRoom = () => {
+  return userBookings.some((booking) => booking._id === rooms.id);
+};
+
+
+const handleBookNow = () => {
+  if (availableSeats > 0) {
+    if (userHasBookedRoom()) {
+      Swal.fire('Error', 'You have already booked this room.', 'error');
+    } else {
+      // If there are available seats and the user hasn't booked the room, allow the booking
       const summary = `Room: ${rooms.name}\nDate: ${bookingDate.toDateString()}\nDuration: ${bookingDuration} days\nTotal Price: $${rooms.pricePerNight * bookingDuration}\nRoom Description: ${rooms.description}`;
 
       swal({
-        title: "Booking Summary",
+        title: "Booking Summary, Now please confirm Booking",
         text: summary,
         icon: "info",
         buttons: true,
-      })
-        .then((confirmed) => {
-          if (confirmed) {
-            // Implement your logic here to proceed with the booking.
-            setShowSummary(true);
+      }).then((confirmed) => {
+        if (confirmed) {
+          // Implement your logic here to proceed with the booking.
+          setShowSummary(true);
 
-            // Decrement available seats
-            setAvailableSeats(availableSeats - 1);
-          }
-        });
-    } else {
-      // No available seats, show an error message
-      swal('Error', 'The room is not available.', 'error');
+          // Decrement available seats
+          setAvailableSeats(availableSeats - 1);
+        }
+      });
     }
-  };
-
+  } else {
+    // No available seats, show an error message
+    swal('Error', 'The room is not available.', 'error');
+  }
+};
 
   const handleConfirmBooking = async () => {
     

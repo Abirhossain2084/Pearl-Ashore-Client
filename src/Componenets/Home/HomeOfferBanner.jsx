@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const HomeOfferBanner = () => {
   return (
-    <div className="bg-gradient-to-r from-[#9BBEC8] to-[#427D9D] p-8 text-white">
+    <div className="bg-gradient-to-r from-[#9BBEC8] to-[#427D9D] p-8 text-white my-20">
     <div className="container mx-auto text-center">
       <h2 className="text-4xl font-bold mb-4">Special Offers & Promotions</h2>
       <p className="text-lg mb-8">
