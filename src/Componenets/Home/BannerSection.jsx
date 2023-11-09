@@ -16,7 +16,7 @@ const BannerSection = () => {
       {/* Content */}
       <div className="relative z-20 flex items-center justify-center h-full text-white">
         <div className="text-center">
-          <h1 className="text-4xl font-bold">About Us</h1>
+          <h1 className="text-4xl font-bold">Welcome to pearl ashore</h1>
           <p className="mt-4 text-lg">
             Discover a world of luxury and comfort at our hotel. Book your stay today!
           </p>
