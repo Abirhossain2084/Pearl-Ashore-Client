@@ -12,6 +12,8 @@ const MyBookings = () => {
 
   const axiosSecure = useAxiosSecure();
 
+  
+
   // const url = `http://localhost:5000/bookings?email=${user.email}`;
   const url = `/bookings?email=${user.email}`;
 
@@ -73,12 +75,12 @@ const handleDelete = (id) => {
 
               <th>Image</th>
               <th>Service Name</th>
-              <th>Date</th>
+              <th>Booking Date</th>
               <th>Update Date</th>
 
               <th>User Email</th>
               <th>Review</th>
-              <th>Delete item</th>
+              <th>Cancel Reservation</th>
             </tr>
           </thead>
           <tbody>
