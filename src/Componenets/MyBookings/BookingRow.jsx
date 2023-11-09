@@ -60,7 +60,7 @@ const BookingRow = ({ booking, handleDelete, handleBookingConfirm, handleDateUpd
         } else {
           Swal.fire(
             'Error',
-            'Cannot cancel booking within one day of the check-in date',
+            'Can not cancel booking within one day of the check-in date',
             'error'
           );
         }
