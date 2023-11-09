@@ -21,7 +21,7 @@ const HomeTestimonial = () => {
             <div className='text-center my-10 font-bold text-5xl'>
                 <h2 className='text-[#427D9D]'>Testimonials</h2>
 
-                <p className='text-lg font-semibold'>See What our authentic cutomer customer says</p>
+                <p className='text-lg font-semibold'>See What our authentic  customer says</p>
             </div>
 
             <Carousel showArrows={true} infiniteLoop={true} showStatus={false} showThumbs={false}>

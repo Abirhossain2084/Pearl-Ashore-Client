@@ -22,6 +22,7 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
 import RoomDetails from './Componenets/Rooms/RoomDetails ';
 import DoReview from './Componenets/Review/DoReview';
 import AboutUs from './Componenets/About us/Aboutus';
+import ContactUs from './Componenets/ContactUs/ContactUs';
 
 
 
@@ -67,6 +68,11 @@ const router = createBrowserRouter([
       {
         path:"/aboutus",
         element:<AboutUs></AboutUs>,
+        
+      },
+      {
+        path:"/contactus",
+        element:<ContactUs></ContactUs>,
         
       },
       
