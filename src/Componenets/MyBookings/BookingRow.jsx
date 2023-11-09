@@ -1,57 +1,71 @@
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Swal from 'sweetalert2'; // Import SweetAlert library
+import Swal from 'sweetalert2';
+
 const BookingRow = ({ booking, handleDelete, handleBookingConfirm, handleDateUpdate }) => {
     const { _id, name, email, photo, date, duration, status } = booking;
 
-    console.log(booking);
     const [isEditing, setIsEditing] = useState(false);
-    const [newDate, setNewDate] = useState(date); // Initialize with the current date
-
-   
+    const [newDate, setNewDate] = useState(date);
 
     const handleUpdateDate = async () => {
-      const updaeteDate = {
-        date: newDate,
-      };
-      console.log(updaeteDate);
-    
-      Swal.fire({
-        title: 'Press update and reload the page to see your updated date',
-        text: 'Are you sure you want to update the booking date?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, update',
-      }).then(async (result) => {
-        if (result.isConfirmed) {
-          const response = await fetch(`https://pearl-ashore-server.vercel.app/bookings/${_id}`, {
-            method: 'PUT',
-            headers: {
-              'content-type': 'application/json',
-            },
-            body: JSON.stringify(updaeteDate),
-          });
-    
-          if (response.ok) {
-            // Update the date in the UI
-            setNewDate(updaeteDate.date);
-        
-            Swal.fire('Success', 'Booking date updated successfully', 'success');
-        
-            window.location.reload();
-
-        } else {
-            Swal.fire('Error', 'Failed to update booking', 'error');
+        const updatedDate = {
+          date: newDate,
+        };
+      
+        Swal.fire({
+          title: 'Date is updated ',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'okay',
+        }).then(async (result) => {
+          if (result.isConfirmed) {
+            const response = await fetch(`http://localhost:5000/bookings/${_id}`, {
+              method: 'PUT',
+              headers: {
+                'content-type': 'application/json',
+              },
+              body: JSON.stringify(updatedDate),
+            });
+      
+            if (response.ok) {
+              setNewDate(updatedDate.date);
+      
+              Swal.fire('Success', 'Booking date updated successfully', 'success');
+      
+              handleBookingConfirm(_id);
+            } else {
+              Swal.fire('Error', 'Failed to update booking', 'error');
+            }
+      
+            setIsEditing(false);
           }
-    
-          setIsEditing(false); // Reset editing state
+        });
+      };
+
+      const isCancelable = () => {
+        const currentDate = new Date();
+        const bookingDate = new Date(date);
+        const differenceInDays = Math.floor((bookingDate - currentDate) / (24 * 60 * 60 * 1000));
+      
+        return differenceInDays <= 1;
+      };
+      
+      const handleCancel = () => {
+        if (isCancelable()) {
+          // Implement your cancel logic here
+          handleDelete(_id);
+        } else {
+          Swal.fire(
+            'Error',
+            'Cannot cancel booking within one day of the check-in date',
+            'error'
+          );
         }
-      });
-    };
-    
+      };
+      
 
     return (
         <tr>
@@ -74,14 +88,13 @@ const BookingRow = ({ booking, handleDelete, handleBookingConfirm, handleDateUpd
                     date
                 )}
             </td>
-             <th>
+            <th>
                 {status === 'confirm' ? (
                     <span className="font-bold text-primary">Confirmed</span>
                 ) : isEditing ? (
                     <button onClick={() => handleUpdateDate(_id)} className="btn btn-ghost bg-black text-white btn-xs">
                         Confirm Update
                     </button>
-
                 ) : (
                     <button onClick={() => setIsEditing(true)} className="btn btn-ghost bg-black text-white btn-xs">
                         Update Date
@@ -89,24 +102,19 @@ const BookingRow = ({ booking, handleDelete, handleBookingConfirm, handleDateUpd
                 )}
             </th>
             <td>{email}</td>
-
-
             <td>
-
-            <Link to={`/reviews/${_id}`} >
-            
-              <button className='btn text-white h-10 bg-[#427D9D]'>Give Review</button>
-          </Link>
-                
+                <Link to={`/reviews/${_id}`}>
+                    <button className='btn text-white h-10 bg-[#427D9D]'>Give Review</button>
+                </Link>
             </td>
-          
-          
             <th>
-                <button onClick={() => handleDelete(_id)} className="btn btn-sm btn-circle">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
+                {isCancelable() ? (
+                    <button onClick={handleCancel} className="btn btn-sm btn-circle">
+                        Cancel
+                    </button>
+                ) : (
+                    <span className="text-gray-500">Cannot Cancel</span>
+                )}
             </th>
         </tr>
     );

@@ -86,16 +86,8 @@ function AboutUs() {
         </div>
       </div>
 
-      <h2 className="text-2xl font-bold mb-2">Management</h2>
-      <p className="mb-6">
-        - [Manager Name], General Manager
-        <br />
-        - [Executive Name], Executive Chef
-        <br />
-        - [Director Name], Director of Guest Services
-        <br />
-        - [Other Titles and Names]
-      </p>
+     
+      
     </div>
   );
 }

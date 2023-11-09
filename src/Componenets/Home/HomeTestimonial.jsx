@@ -8,7 +8,7 @@ const HomeTestimonial = () => {
     console.log(reviews);
 
     useEffect(() => {
-        fetch('https://pearl-ashore-server.vercel.app/reviews')
+        fetch('http://localhost:5000/reviews')
             .then((res) => res.json())
             .then((data) => {
                 setReviews(data);

@@ -46,12 +46,12 @@ const router = createBrowserRouter([
       {
         path:"/rooms",
         element:<Room></Room>,
-        loader: ()=> fetch('https://pearl-ashore-server.vercel.app/rooms')
+        loader: ()=> fetch('http://localhost:5000/rooms')
       },
       {
         path:"/rooms/:id",
         element:<RoomDetails></RoomDetails>,
-        loader: ({params}) => fetch(`https://pearl-ashore-server.vercel.app/rooms/${params.id}`)
+        loader: ({params}) => fetch(`http://localhost:5000/rooms/${params.id}`)
         
       },
       {
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
       {
         path:"/reviews/:id",
         element:<PrivateRoute><DoReview></DoReview></PrivateRoute>,
-        loader: ({params}) => fetch(`https://pearl-ashore-server.vercel.app/bookings/${params.id}`)
+        loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
       },
       {
         path:"/aboutus",

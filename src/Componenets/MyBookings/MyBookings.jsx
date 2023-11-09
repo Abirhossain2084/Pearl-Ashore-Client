@@ -12,7 +12,7 @@ const MyBookings = () => {
 
   const axiosSecure = useAxiosSecure();
 
-  // const url = `https://pearl-ashore-server.vercel.app/bookings?email=${user.email}`;
+  // const url = `http://localhost:5000/bookings?email=${user.email}`;
   const url = `/bookings?email=${user.email}`;
 
   // Fetch user's bookings and update the state
@@ -42,7 +42,7 @@ const handleDelete = (id) => {
     confirmButtonText: 'Yes, delete it!',
   }).then((result) => {
     if (result.isConfirmed) {
-      fetch(`https://pearl-ashore-server.vercel.app/bookings/${id}`, {
+      fetch(`http://localhost:5000/bookings/${id}`, {
         method: 'DELETE',
       })
         .then((res) => res.json())
